@@ -1,5 +1,5 @@
 import unittest
-from grade_calculator import calculate_grade
+from grade_calculator import calculate_grade 
 
 class TestGradeCalculator(unittest.TestCase):
     def test_single_assignments(self):
