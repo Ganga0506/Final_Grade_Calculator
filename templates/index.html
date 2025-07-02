@@ -3,39 +3,49 @@
 {% block content %}
     <h1>Grade Calculator</h1>
     <form method="POST">
+        {% for i in range(1, 6) %}
         <div>
-            <label for="name1">Assignment 1 Name:</label>
-            <input type="text" id="name1" name="name1" required>
-            <label for="grade1">Grade:</label>
-            <input type="number" id="grade1" name="grade1" required>
-            <label for="weight1">Weight (%):</label>
-            <input type="number" id="weight1" name="weight1" required>
+            <label for="name{{ i }}">Assignment {{ i }} Name:</label>
+            <input type="text" id="name{{ i }}" name="name{{ i }}" required>
+
+            <label for="grade{{ i }}">Grade:</label>
+            <input type="number" id="grade{{ i }}" name="grade{{ i }}" required>
+
+            <label for="weight{{ i }}">Weight (%):</label>
+            <input type="number" id="weight{{ i }}" name="weight{{ i }}" required>
         </div>
-        <div>
-            <label for="name2">Assignment 2 Name:</label>
-            <input type="text" id="name2" name="name2" required>
-            <label for="grade2">Grade:</label>
-            <input type="number" id="grade2" name="grade2" required>
-            <label for="weight2">Weight (%):</label>
-            <input type="number" id="weight2" name="weight2" required>
-        </div>
-        <div>
-            <label for="name3">Assignment 3 Name:</label>
-            <input type="text" id="name3" name="name3" required>
-            <label for="grade3">Grade:</label>
-            <input type="number" id="grade3" name="grade3" required>
-            <label for="weight3">Weight (%):</label>
-            <input type="number" id="weight3" name="weight3" required>
-        </div>
+        {% endfor %}
         <button type="submit">Calculate Final Grade</button>
     </form>
 
     {% if final_grade is not none %}
         <h2>Your Final Grade: {{ final_grade }}</h2>
+
+        <h3>Calculation Breakdown:</h3>
+        <ul>
+            {% for step in steps %}
+                <li>{{ step.name }}: {{ step.grade }} × {{ step.weight }}% → {{ step.portion }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Assignment Summary:</h3>
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Weight (%)</th>
+            </tr>
+            {% for name, grade, weight in assignments %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ grade }}</td>
+                <td>{{ weight }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     {% endif %}
 
     {% if error %}
         <p style="color: red;">Error: {{ error }}</p>
     {% endif %}
 {% endblock %}
-
