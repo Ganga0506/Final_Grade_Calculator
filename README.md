@@ -1,4 +1,4 @@
-# Final_Grade_Calculator
+# Final Grade Calculator
 
 A simple Flask web application that calculates a weighted final grade based on assignments. This app supports 5 fixed assignments, rounds the final grade to 2 decimal places, shows the math behind the calculation, and displays an assignment summary table.
 
