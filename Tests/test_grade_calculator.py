@@ -1,5 +1,5 @@
 import unittest
-from grade_calculator import calculate_grade, InvalidWeightError 
+from App.grade_calculator import calculate_grade, InvalidWeightError 
 
 class TestGradeCalculator(unittest.TestCase):
     def test_single_assignments(self):

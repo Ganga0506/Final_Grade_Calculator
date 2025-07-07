@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from grade_calculator import calculate_grade, InvalidWeightError
+from App.grade_calculator import calculate_grade, InvalidWeightError
 
 app = Flask(__name__)
 
